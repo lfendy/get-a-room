@@ -1,12 +1,12 @@
 var canvas = document.getElementById('roomCanvas'),
     ctx = canvas.getContext('2d');
 
-canvas.width = 700;
-canvas.height = 900;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 var bgImage = new Image();
 bgImage.onload = function() {
-  ctx.drawImage(bgImage, 0, 0, 700, 900);
+  ctx.drawImage(bgImage, 0, 0, Math.min(bgImage.width, canvas.width), Math.min(bgImage.height, canvas.height));
   container.redraw();
 }
 bgImage.src = "resources/floorplan_big.png"
