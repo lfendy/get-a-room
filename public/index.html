@@ -4,8 +4,18 @@
      <canvas id="roomCanvas"></canvas>
     </div>
 
-
-    <script type="text/javascript" src="js/canvaslayers.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/canvaslayers.js"></script>
     <script type="text/javascript" src="js/spike.js"></script>
+    <script>
+    var init = function(){
+      draw();
+    };
+    $(document).ready(init);
+
+    $(window).resize(init);
+
+    </script>
+
   </body>
 </html>
