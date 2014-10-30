@@ -6,10 +6,14 @@ canvas.height = window.innerHeight;
 
 var bgImage = new Image();
 bgImage.onload = function() {
-  ctx.drawImage(bgImage, 0, 0, Math.min(bgImage.width, canvas.width), Math.min(bgImage.height, canvas.height));
+  var aspectRatio = 1159 / 846;
+  var width = canvas.width;
+  var height = aspectRatio * width
+  ctx.drawImage(bgImage, 0, 0, width, height);
   container.redraw();
 }
 bgImage.src = "resources/floorplan_big.png"
+
 
 var drawRect = function(context, color, x, y, width, height) {
     context.fillStyle=color;
