@@ -60,9 +60,9 @@ var draw = function(){
   };
 
   var room2 = {
-    x: 650,
-    y: 530,
-    width: 163,
+    x: 625,
+    y: 515,
+    width: 147,
     height: 255,
     color: colorRed
   };
