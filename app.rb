@@ -1,17 +1,7 @@
 require 'sinatra'
 
 get '/' do
-  # redirect to index.html
-    File.read(File.join('static', 'index.html'))
-end
-
-get '/petar' do
-  # redirect to index.html
-    File.read(File.join('static', 'petar.html'))
-end
-
-get '/static' do
-  # serve stuff from /static
+  redirect '/index.html'
 end
 
 get '/agent' do
