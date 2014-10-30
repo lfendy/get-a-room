@@ -1,8 +1,6 @@
 var canvas = document.getElementById('roomCanvas'),
     ctx = canvas.getContext('2d');
 
-
-
 canvas.width = 600;
 canvas.height = 800;
 
@@ -13,17 +11,20 @@ bgImage.onload = function() {
 }
 bgImage.src = "resources/floorplan_big.png"
 
-var container = new CanvasLayers.Container(canvas, true);
+var drawRect = function(context, color, x, y, width, height) {
+    context.fillStyle=color;
+    context.fillRect(x, y, width, height);
+}
+
+var container = new CanvasLayers.Container(canvas, false);
 container.onRender = function(layer, rect, context) {
 }
 
-
-var roomLayer = new CanvasLayers.Layer(40, 20, 160, 120);
+var roomLayer = new CanvasLayers.Layer(0, 0, canvas.width, canvas.height);
 container.getChildren().add(roomLayer);
 
 roomLayer.onRender = function(layer, rect, context) {
-    context.fillStyle='rgba(0, 0, 255, 0.5)';
-    context.fillRect(layer.getX(), layer.getY(), layer.getWidth(), layer.getHeight());
+  drawRect(context, 'rgba(0, 255, 255, 0.5)', 0, 30, 300, 230);
+  drawRect(context, 'rgba(0, 0, 255, 0.5)', 0, 350, 100, 230);
 }
-
 
