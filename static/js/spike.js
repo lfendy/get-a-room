@@ -1,8 +1,8 @@
 var canvas = document.getElementById('roomCanvas'),
     ctx = canvas.getContext('2d');
 
-canvas.width = 600;
-canvas.height = 800;
+canvas.width = 700;
+canvas.height = 900;
 
 var bgImage = new Image();
 bgImage.onload = function() {
