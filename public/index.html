@@ -1,9 +1,18 @@
 <html>
+  <head>
+    <script src="js/lib/jquery-2.1.0.min.js"></script>
+    <script src="js/lib/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+    <link rel="stylesheet" href="js/lib/jquery-ui-1.11.2.custom/jquery-ui.css">
+    <script>
+      $(function() {
+        $("#slider").slider();
+        });
+      </script>
+    </head>
   <body>
     <div id="main">
      <canvas id="roomCanvas"></canvas>
     </div>
-
     <script type="text/javascript" src="js/lib/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="js/lib/canvaslayers.js"></script>
     <script type="text/javascript" src="js/spike.js"></script>
@@ -17,5 +26,6 @@
 
     </script>
 
+    <div id="slider"></div>
   </body>
 </html>
