@@ -5,23 +5,33 @@
     <div id="main">
      <canvas id="roomCanvas"></canvas>
     </div>
-
-    <div id="slider" class="centre"></div>
-
+    <div id="footer">
+    <div id="slide" class="centre"></div>
+    </div>
 
 
     <script src="js/lib/jquery-2.1.0.min.js"></script>
     <script src="js/lib/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+    <script src="js/lib/no-ui-slider/jquery.nouislider.js"></script>
     <link rel="stylesheet" href="css/spike.css">
     <link rel="stylesheet" href="js/lib/jquery-ui-1.11.2.custom/jquery-ui.css">
+    <link rel="stylesheet" href="js/lib/no-ui-slider/jquery.nouislider.css">
     <script type="text/javascript" src="js/lib/canvaslayers.js"></script>
     <script type="text/javascript" src="js/spike.js"></script>
     <script>
 
 
-    var initSlider = function(){
-        $("#slider").slider({step:10});
-        $("#slider").width("80%");
+    var initSlide = function(){
+      $("#slide").noUiSlider({
+        start: [20, 80],
+        connect: true,
+        step: 24,
+        range: {
+          'min': 0,
+          'max': 100
+        }
+      });
+        //$("#slider").width("80%");
 //        $("#slider").position({
 //          my: "center",
 //          at: "right"
@@ -70,9 +80,9 @@
     };
 
     var init = function(){
-      initSlider();
       spike.draw();
       getAvailability();
+      initSlide();
     };
 
     $(document).ready(init);
