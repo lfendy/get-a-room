@@ -12,7 +12,7 @@
 
     <script src="js/lib/jquery-2.1.0.min.js"></script>
     <script src="js/lib/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
-    <script src="js/lib/no-ui-slider/jquery.nouislider.js"></script>
+    <script src="js/lib/no-ui-slider/jquery.nouislider.all.js"></script>
     <link rel="stylesheet" href="css/spike.css">
     <link rel="stylesheet" href="js/lib/jquery-ui-1.11.2.custom/jquery-ui.css">
     <link rel="stylesheet" href="js/lib/no-ui-slider/jquery.nouislider.css">
@@ -23,13 +23,14 @@
 
     var initSlide = function(){
       $("#slide").noUiSlider({
-        start: [20, 80],
+        start: [28, 30],
         connect: true,
-        step: 24,
+        step: 1,
         range: {
-          'min': 0,
-          'max': 100
-        }
+          'min': 14,
+          'max': 38
+        },
+        behaviour: 'tap-drag',
       });
         //$("#slider").width("80%");
 //        $("#slider").position({
