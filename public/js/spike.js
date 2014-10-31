@@ -1,6 +1,17 @@
 var spike = spike || {};
 
-spike.draw = function(){
+spike.draw = function(givenRoomAvailabilityMap){
+  var roomColorMap = givenRoomAvailabilityMap ||
+    {
+    boardRoom: true,
+    room1: false,
+    room2: false,
+    room3: true,
+    room4: true,
+    room5: false,
+    room6: false
+  };
+
   var magicWidth = 846;
   var magicHeight = 1159
   var aspectRatio = magicHeight / magicWidth;
@@ -34,15 +45,11 @@ spike.draw = function(){
   var roomLayer = new CanvasLayers.Layer(0, 0, canvas.width, canvas.height);
   container.getChildren().add(roomLayer);
 
-  var colorRed =  'rgba(255, 0, 0, 0.3)';
-  var colorGreen =  'rgba(0, 255, 0, 0.3)';
-
   var boardRoom = {
     x: 0,
     y: 0,
     width: 440,
     height: 430,
-    color: colorGreen
   };
 
   var boardRoomHack = {
@@ -50,7 +57,6 @@ spike.draw = function(){
     y: 85,
     width: 75,
     height: 260,
-    color: colorGreen
   };
 
   var room1 = {
@@ -58,7 +64,6 @@ spike.draw = function(){
     y: 515,
     width: 150,
     height: 255,
-    color: colorGreen
   };
 
   var room2 = {
@@ -66,7 +71,6 @@ spike.draw = function(){
     y: 515,
     width: 147,
     height: 255,
-    color: colorRed
   };
 
   var room3 = {
@@ -74,7 +78,6 @@ spike.draw = function(){
     y: 430,
     width: 183,
     height: 385,
-    color: colorRed
   };
 
   var room4 = {
@@ -82,7 +85,6 @@ spike.draw = function(){
     y: 816,
     width: 183,
     height: 385,
-    color: colorRed
   };
 
   var room5 = {
@@ -90,7 +92,6 @@ spike.draw = function(){
     y: 856,
     width: 185,
     height: 130,
-    color: colorRed
   };
 
   var room6 = {
@@ -98,7 +99,6 @@ spike.draw = function(){
     y: 987,
     width: 185,
     height: 170,
-    color: colorGreen
   };
 
   var scaleRoom = function(room, scale) {
@@ -111,23 +111,42 @@ spike.draw = function(){
     };
   };
 
-  var drawRoom = function(context, givenRoom){
+  var reColorRoom = function(room, newColor) {
+    return {
+      x: room.x,
+      y: room.y,
+      width: room.width,
+      height: room.height,
+      color: newColor
+    };
+  };
+
+  var makeBusy = function(room){
+    var colorRed =  'rgba(255, 0, 0, 0.3)';
+    return reColorRoom(room, colorRed);
+  };
+
+  var makeFree = function(room){
+    var colorGreen =  'rgba(0, 255, 0, 0.3)';
+    return reColorRoom(room, colorGreen);
+  };
+
+  var drawRoom = function(context, givenRoom, available){
     var scale = window.innerWidth / magicWidth;
     var room = scaleRoom(givenRoom, scale);
+    room = available ? makeFree(room) : makeBusy(room);
     drawRect(context, room.color, room.x, room.y, room.width, room.height);
   };
 
   roomLayer.onRender = function(layer, rect, context) {
-    drawRoom(context, boardRoom);
-    drawRoom(context, boardRoomHack);
-    drawRoom(context, room1);
-    drawRoom(context, room2);
-    drawRoom(context, room3);
-    drawRoom(context, room4);
-    drawRoom(context, room5);
-    drawRoom(context, room6);
+    drawRoom(context, boardRoom, roomColorMap.boardRoom);
+    drawRoom(context, boardRoomHack, roomColorMap.boardRoom);
+    drawRoom(context, room1, roomColorMap.room1);
+    drawRoom(context, room2, roomColorMap.room2);
+    drawRoom(context, room3, roomColorMap.room3);
+    drawRoom(context, room4, roomColorMap.room4);
+    drawRoom(context, room5, roomColorMap.room5);
+    drawRoom(context, room6, roomColorMap.room6);
   };
-
-
 
 };
