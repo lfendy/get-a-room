@@ -1,3 +1,4 @@
+
 var spike = spike || {};
 
 spike.draw = function(givenRoomAvailabilityMap){
@@ -176,5 +177,38 @@ spike.draw = function(givenRoomAvailabilityMap){
     drawRoom(context, room5, roomColorMap.room5);
     drawRoom(context, room6, roomColorMap.room6);
   };
+
+  var scalePosition = function(position) {
+    var scale = window.innerWidth / magicWidth;
+    return [scale*position[0],
+    scale*position[1],
+    scale*position[2],
+    scale*position[3]];
+  };
+
+  canvas.addEventListener("mousedown", function(e) {
+        var x = e.clientX - canvas.offsetLeft + window.pageXOffset;
+        var y = e.clientY - canvas.offsetTop + window.pageYOffset;
+        console.log(x);
+        console.log(y);
+
+        if (x > 600) {
+
+        $('#boardroom').popup();
+        $('#boardroom').popup("open");          
+        } else {
+        $('#room2').popup();
+        $('#room2').popup("open");            
+        }
+
+
+    }, false);
+
+  $('#book-btn').click(function() {
+    console.log("bcl");
+    $('#book-form').popup();
+    $('#book-form').popup("open");  
+
+  });
 
 };
