@@ -1,4 +1,6 @@
-var draw = function(){
+var spike = spike || {};
+
+spike.draw = function(){
   var magicWidth = 846;
   var magicHeight = 1159
   var aspectRatio = magicHeight / magicWidth;

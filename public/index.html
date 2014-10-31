@@ -29,13 +29,23 @@
 //          });
     };
 
+    var reDraw = function(data){
+      window.awesome = data;
+      console.log("OK");
+    };
+
+    var getAvailability = function(){
+      return $.get('resources/availability.json', reDraw);
+    };
+
     var init = function(){
       initSlider();
-      draw();
+      spike.draw();
+      getAvailability();
     };
 
     $(document).ready(init);
-    $(window).resize(draw);
+    $(window).resize(spike.draw);
 
     </script>
   </body>
