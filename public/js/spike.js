@@ -178,13 +178,24 @@ spike.draw = function(givenRoomAvailabilityMap){
     drawRoom(context, room6, roomColorMap.room6);
   };
 
-  var scalePosition = function(position) {
-    var scale = window.innerWidth / magicWidth;
-    return [scale*position[0],
-    scale*position[1],
-    scale*position[2],
-    scale*position[3]];
-  };
+
+  $('#boardroom').popup();
+  $('#boardroom').popup("close"); 
+
+  $('#room1').popup();
+  $('#room1').popup("close");  
+  $('#room2').popup();
+  $('#room2').popup("close");  
+  $('#room3').popup();
+  $('#room3').popup("close");  
+  $('#room4').popup();
+  $('#room4').popup("close");  
+  $('#room5').popup();
+  $('#room5').popup("close");  
+  $('#room6').popup();
+  $('#room6').popup("close"); 
+  $('#book-form').popup();
+  $('#book-form').popup("close");  
 
   canvas.addEventListener("mousedown", function(e) {
         var x = e.clientX - canvas.offsetLeft + window.pageXOffset;
@@ -193,11 +204,8 @@ spike.draw = function(givenRoomAvailabilityMap){
         console.log(y);
 
         if (x > 600) {
-
-        $('#boardroom').popup();
         $('#boardroom').popup("open");          
         } else {
-        $('#room2').popup();
         $('#room2').popup("open");            
         }
 
