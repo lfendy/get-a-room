@@ -1,3 +1,4 @@
+
 var spike = spike || {};
 
 spike.draw = function(givenRoomAvailabilityMap){
@@ -101,7 +102,25 @@ spike.draw = function(givenRoomAvailabilityMap){
     height: 170,
   };
 
-  function isInRoom(room, x, y) {
+  var scaleRoom = function(room, scale) {
+    return {
+      x: room.x * scale,
+      y: room.y * scale,
+      width: room.width * scale,
+      height: room.height * scale,
+      color: room.color
+    };
+  };
+
+  function isInRoom(givenRoom, x, y) {
+    var scale = window.innerWidth / magicWidth;
+    console.log(magicWidth);
+    var room = scaleRoom(givenRoom, scale);
+    console.log("scale " + scale);
+    console.log("room x" + room.x);
+    console.log("room y" + room.y);
+    console.log("room width" + room.width);
+    console.log("room height" + room.height);
     if ((x > room.x) && (x < (room.x + room.width)) && (y > room.y) && (y < (room.y + room.height))) {
        return true;
     }
@@ -110,7 +129,7 @@ spike.draw = function(givenRoomAvailabilityMap){
 
   function getRoomFromMouseClick(x, y) {
     if (isInRoom(boardRoom, x, y) || isInRoom(boardRoomHack, x, y)) {
-      return "boardRoom";
+      return "boardroom";
     } else if (isInRoom(room1, x, y)) {
       return "room1";
     } else if (isInRoom(room2, x, y)) {
@@ -127,17 +146,6 @@ spike.draw = function(givenRoomAvailabilityMap){
       return "Not in any room";
     }
   }
-
-
-  var scaleRoom = function(room, scale) {
-    return {
-      x: room.x * scale,
-      y: room.y * scale,
-      width: room.width * scale,
-      height: room.height * scale,
-      color: room.color
-    };
-  };
 
   var reColorRoom = function(room, newColor) {
     return {
@@ -176,5 +184,69 @@ spike.draw = function(givenRoomAvailabilityMap){
     drawRoom(context, room5, roomColorMap.room5);
     drawRoom(context, room6, roomColorMap.room6);
   };
+
+
+  $('#boardroom').popup();
+  $('#boardroom').popup("close"); 
+
+  $('#room1').popup();
+  $('#room1').popup("close");  
+  $('#room2').popup();
+  $('#room2').popup("close");  
+  $('#room3').popup();
+  $('#room3').popup("close");  
+  $('#room4').popup();
+  $('#room4').popup("close");  
+  $('#room5').popup();
+  $('#room5').popup("close");  
+  $('#room6').popup();
+  $('#room6').popup("close"); 
+  $('#book-form').popup();
+  $('#book-form').popup("close");  
+
+  canvas.addEventListener("mousedown", function(e) {
+
+    canoffset = $(canvas).offset();
+    x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
+    y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
+
+        console.log(x);
+        console.log(y);
+
+        var room = getRoomFromMouseClick(x, y);
+        console.log(room);
+        switch (room) {
+          case "boardroom":
+            $('#boardroom').popup("open");
+            break;
+          case "room1":
+            $('#room1').popup("open");
+            break;
+          case "room2":
+            $('#room2').popup("open");
+            break;
+          case "room3":
+            $('#room3').popup("open");
+            break;
+          case "room4":
+            $('#room4').popup("open");
+            break;
+          case "room5":
+            $('#room5').popup("open");
+            break;
+          case "room6":
+            $('#room6').popup("open");
+            break;
+        }
+
+
+    }, false);
+
+  $('#book-btn').click(function() {
+    console.log("bcl");
+    $('#book-form').popup();
+    $('#book-form').popup("open");  
+
+  });
 
 };

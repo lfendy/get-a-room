@@ -1,11 +1,11 @@
-<html>
+<!doctype html>
   <head>
   </head>
   <body>
 
-  <div id="main">
-    <canvas id="roomCanvas"></canvas>
-  </div>
+    <div data-role="page" id="main">
+     <canvas id="roomCanvas"></canvas>
+    </div>
   <div id="header" align="right">
     <div id="start-time"><h1>start</h1></div>
     <div id="end-time"><h1>end</h1></div>
@@ -22,9 +22,59 @@
     <link rel="stylesheet" href="js/lib/jquery-ui-1.11.2.custom/jquery-ui.css">
     <link rel="stylesheet" href="js/lib/no-ui-slider/jquery.nouislider.css">
     <script type="text/javascript" src="js/lib/canvaslayers.js"></script>
+    <script src="js/lib/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+    <link rel="stylesheet" href="js/lib/jquery-ui-1.11.2.custom/jquery-ui.css">
+    <script type="text/javascript" src="js/lib/jquery.mobile-1.4.4/jquery.mobile-1.4.4.js"></script>
+    <link rel="stylesheet" href="js/lib/jquery.mobile-1.4.4/jquery.mobile-1.4.4.css">
     <script type="text/javascript" src="js/spike.js"></script>
-    <script>
 
+    <div id="boardroom" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/boardroom.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+    <div id="room1" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/room1.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+    <div id="room2" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/room2.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+    <div id="room3" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/room3.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+    <div id="room4" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/room4.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+    <div id="room5" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/room5.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+    <div id="room6" data-role="popup">
+      <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        <img src="resources/room6.png"/>
+        <button id="book-btn">Book</button>
+    </div>
+
+    <div id="book-form" data-role="popup">
+      <form>
+        <div style="padding:10px 20px;">
+          <h3>Please sign in</h3>
+
+            <button type="submit" data-theme="b" class=" ui-btn ui-btn-b ui-shadow ui-corner-all">Sign in</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
     var timeIndex = {
       "14.00": "7:00 AM",
       "15.00": "7:30 AM",
