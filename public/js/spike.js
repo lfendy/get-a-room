@@ -101,6 +101,36 @@ spike.draw = function(givenRoomAvailabilityMap){
     height: 170,
   };
 
+  function isInRoom(room, x, y) {
+    if ((x > room.x) && (x < (room.x + room.width)) && (y > room.y) && (y < (room.y + room.height))) {
+       return true;
+    }
+    return false;
+  }
+
+  function getRoomFromMouseClick(x, y) {
+    if (isInRoom(boardRoom, x, y) || isInRoom(boardRoomHack, x, y)) {
+	return "boardRoom";
+    } else if (isInRoom(room1, x, y) {
+	return "room1";
+    } else if (isInRoom(room2, x, y) {
+	return "room2";
+    } else if (isInRoom(room3, x, y) {
+	return "room3";
+    } else if (isInRoom(room4, x, y) {
+	return "room4";
+    } else if (isInRoom(room5, x, y) {
+	return "room5";
+    } else if (isInRoom(room6, x, y) {
+	return "room6";
+    } else {
+        return "Not in any room";
+    }
+	
+    
+  }
+
+
   var scaleRoom = function(room, scale) {
     return {
       x: room.x * scale,
