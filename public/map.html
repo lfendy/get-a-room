@@ -7,8 +7,8 @@
      <canvas id="roomCanvas"></canvas>
     </div>
   <div id="header" align="right">
-    <div id="start-time"><h1>start</h1></div>
-    <div id="end-time"><h1>end</h1></div>
+    <div id="start-time"><h4>start</h4></div>
+    <div id="end-time"><h4>end</h4></div>
   </div>
   <div id="footer">
     <div id="slide" class="centre"></div>
@@ -139,8 +139,8 @@
       var newMap = createAvailabilityMap(start,end,window.awesome);
       var keyStart = start.toString();
       var keyEnd = end.toString();
-      $("#start-time").html("<h1>" + timeIndex[keyStart] + "</h1>");
-      $("#end-time").html("<h1>" + timeIndex[keyEnd] + "</h1>");
+      $("#start-time").html("<h4>" + timeIndex[keyStart] + "</h4>");
+      $("#end-time").html("<h4>" + timeIndex[keyEnd] + "</h4>");
       spike.draw(newMap);
     };
 
