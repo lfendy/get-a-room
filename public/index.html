@@ -29,8 +29,39 @@
 //          });
     };
 
+    var isAvailable = function(start, end, roomName, data) {
+      var available = true;
+      var roomData = data[roomName];
+      var availability = roomData.substring(start, end);
+      available = !availability.contains("1");
+      return available;
+    };
+
+    var createAvailabilityMap = function(start, end, data){
+      var boardRoom = isAvailable(start, end, "boardRoom", data);
+      var room1 = isAvailable(start, end, "meetingRoomOne", data);
+      var room2 = isAvailable(start, end, "meetingRoomTwo", data);
+      var room3 = isAvailable(start, end, "meetingRoomThree", data);
+      var room4 = isAvailable(start, end, "meetingRoomFour", data);
+      var room5 = isAvailable(start, end, "meetingRoomFive", data);
+      var room6 = isAvailable(start, end, "meetingRoomSix", data);
+
+      return {
+        boardRoom: boardRoom,
+        room1: room1,
+        room2: room2,
+        room3: room3,
+        room4: room4,
+        room5: room5,
+        room6: room6
+      };
+    };
+
+
     var reDraw = function(data){
       window.awesome = data;
+      var newMap = createAvailabilityMap(21,22,data);
+      spike.draw(newMap);
       console.log("OK");
     };
 
