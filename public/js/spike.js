@@ -102,7 +102,25 @@ spike.draw = function(givenRoomAvailabilityMap){
     height: 170,
   };
 
-  function isInRoom(room, x, y) {
+  var scaleRoom = function(room, scale) {
+    return {
+      x: room.x * scale,
+      y: room.y * scale,
+      width: room.width * scale,
+      height: room.height * scale,
+      color: room.color
+    };
+  };
+
+  function isInRoom(givenRoom, x, y) {
+    var scale = window.innerWidth / magicWidth;
+    console.log(magicWidth);
+    var room = scaleRoom(givenRoom, scale);
+    console.log("scale " + scale);
+    console.log("room x" + room.x);
+    console.log("room y" + room.y);
+    console.log("room width" + room.width);
+    console.log("room height" + room.height);
     if ((x > room.x) && (x < (room.x + room.width)) && (y > room.y) && (y < (room.y + room.height))) {
        return true;
     }
@@ -111,7 +129,7 @@ spike.draw = function(givenRoomAvailabilityMap){
 
   function getRoomFromMouseClick(x, y) {
     if (isInRoom(boardRoom, x, y) || isInRoom(boardRoomHack, x, y)) {
-      return "boardRoom";
+      return "boardroom";
     } else if (isInRoom(room1, x, y)) {
       return "room1";
     } else if (isInRoom(room2, x, y)) {
@@ -128,17 +146,6 @@ spike.draw = function(givenRoomAvailabilityMap){
       return "Not in any room";
     }
   }
-
-
-  var scaleRoom = function(room, scale) {
-    return {
-      x: room.x * scale,
-      y: room.y * scale,
-      width: room.width * scale,
-      height: room.height * scale,
-      color: room.color
-    };
-  };
 
   var reColorRoom = function(room, newColor) {
     return {
@@ -198,15 +205,38 @@ spike.draw = function(givenRoomAvailabilityMap){
   $('#book-form').popup("close");  
 
   canvas.addEventListener("mousedown", function(e) {
-        var x = e.clientX - canvas.offsetLeft + window.pageXOffset;
-        var y = e.clientY - canvas.offsetTop + window.pageYOffset;
+
+    canoffset = $(canvas).offset();
+    x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);
+    y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop - Math.floor(canoffset.top) + 1;
+
         console.log(x);
         console.log(y);
 
-        if (x > 600) {
-        $('#boardroom').popup("open");          
-        } else {
-        $('#room2').popup("open");            
+        var room = getRoomFromMouseClick(x, y);
+        console.log(room);
+        switch (room) {
+          case "boardroom":
+            $('#boardroom').popup("open");
+            break;
+          case "room1":
+            $('#room1').popup("open");
+            break;
+          case "room2":
+            $('#room2').popup("open");
+            break;
+          case "room3":
+            $('#room3').popup("open");
+            break;
+          case "room4":
+            $('#room4').popup("open");
+            break;
+          case "room5":
+            $('#room5').popup("open");
+            break;
+          case "room6":
+            $('#room6').popup("open");
+            break;
         }
 
 

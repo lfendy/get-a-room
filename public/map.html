@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="js/lib/jquery.mobile-1.4.4/jquery.mobile-1.4.4.css">
     <script type="text/javascript" src="js/spike.js"></script>
 
-    <div id="boardroom" data-role="popup" data-theme="a">
+    <div id="boardroom" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/boardroom.png"/>
         <button id="book-btn">Book</button>
@@ -80,7 +80,7 @@
           'max': 38
         },
         behaviour: 'tap-drag',
-      });
+      })};
         //$("#slider").width("80%");
         
     var initSlider = function(){
@@ -92,8 +92,6 @@
 //          of: $("#slider").parent();
 //          });
     };
->>>>>>> popup:public/index.html
-
     var isAvailable = function(start, end, roomName, data) {
       var available = true;
       var roomData = data[roomName];
