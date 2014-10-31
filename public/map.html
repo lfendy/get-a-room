@@ -108,7 +108,7 @@
       var available = true;
       var roomData = data[roomName];
       var availability = roomData.substring(start, end);
-      available = !availability.contains("1");
+      available = availability.search("1") == -1;
       return available;
     };
 
