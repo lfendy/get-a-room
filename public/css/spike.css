@@ -17,3 +17,9 @@
   width: 80%;
   height: 10%;
 }
+#middle
+{
+  width: 300px;
+  left-margin: auto;
+  right-margin: auto;
+}
