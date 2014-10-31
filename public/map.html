@@ -2,12 +2,17 @@
   <head>
   </head>
   <body>
-    <div id="main">
-     <canvas id="roomCanvas"></canvas>
-    </div>
-    <div id="footer">
+
+  <div id="main">
+    <canvas id="roomCanvas"></canvas>
+  </div>
+  <div id="header" align="right">
+    <div id="start-time"><h1>start</h1></div>
+    <div id="end-time"><h1>end</h1></div>
+  </div>
+  <div id="footer">
     <div id="slide" class="centre"></div>
-    </div>
+  </div>
 
 
     <script src="js/lib/jquery-2.1.0.min.js"></script>
@@ -20,6 +25,33 @@
     <script type="text/javascript" src="js/spike.js"></script>
     <script>
 
+    var timeIndex = {
+      "14.00": "7:00 AM",
+      "15.00": "7:30 AM",
+      "16.00": "8:00 AM",
+      "17.00": "8:30 AM",
+      "18.00": "9:00 AM",
+      "19.00": "9:30 AM",
+      "20.00": "10:00 AM",
+      "21.00": "10:30 AM",
+      "22.00": "11:00 AM",
+      "23.00": "11:30 AM",
+      "24.00": "12:00 PM",
+      "25.00": "12:30 PM",
+      "26.00": "1:00 PM",
+      "27.00": "1:30 PM",
+      "28.00": "2:00 PM",
+      "29.00": "2:30 PM",
+      "30.00": "3:00 PM",
+      "31.00": "3:30 PM",
+      "32.00": "4:00 PM",
+      "33.00": "4:30 PM",
+      "34.00": "5:00 PM",
+      "35.00": "5:30 PM",
+      "36.00": "6:00 PM",
+      "37.00": "6:30 PM",
+      "38.00": "7:00 PM",
+    }
 
 
     var isAvailable = function(start, end, roomName, data) {
@@ -55,6 +87,10 @@
       var start = vals[0];
       var end = vals[1];
       var newMap = createAvailabilityMap(start,end,window.awesome);
+      var keyStart = start.toString();
+      var keyEnd = end.toString();
+      $("#start-time").html("<h1>" + timeIndex[keyStart] + "</h1>");
+      $("#end-time").html("<h1>" + timeIndex[keyEnd] + "</h1>");
       spike.draw(newMap);
     };
 
