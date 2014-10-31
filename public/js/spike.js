@@ -204,7 +204,7 @@ spike.draw = function(givenRoomAvailabilityMap){
   $('#book-form').popup();
   $('#book-form').popup("close");  
 
-  canvas.addEventListener("mousedown", function(e) {
+  canvas.addEventListener("mousedown", function(event) {
 
     canoffset = $(canvas).offset();
     x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft - Math.floor(canoffset.left);

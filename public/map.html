@@ -31,37 +31,37 @@
     <div id="boardroom" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/boardroom.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
     <div id="room1" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/room1.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
     <div id="room2" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/room2.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
     <div id="room3" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/room3.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
     <div id="room4" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/room4.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
     <div id="room5" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/room5.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
     <div id="room6" data-role="popup">
       <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
         <img src="resources/room6.png"/>
-        <button id="book-btn">Book</button>
+        <button class="book-btn">Book</button>
     </div>
 
     <div id="book-form" data-role="popup">
@@ -173,6 +173,9 @@
       spike.draw();
       getAvailability();
       initSlide();
+      $(".book-btn").on("click", function(){
+          window.location.replace("booking.html");
+          });
     };
 
     $(document).ready(init);
