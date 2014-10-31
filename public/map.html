@@ -21,24 +21,6 @@
     <script>
 
 
-    var initSlide = function(){
-      $("#slide").noUiSlider({
-        start: [28, 30],
-        connect: true,
-        step: 1,
-        range: {
-          'min': 14,
-          'max': 38
-        },
-        behaviour: 'tap-drag',
-      });
-        //$("#slider").width("80%");
-//        $("#slider").position({
-//          my: "center",
-//          at: "right"
-//          of: $("#slider").parent();
-//          });
-    };
 
     var isAvailable = function(start, end, roomName, data) {
       var available = true;
@@ -68,16 +50,37 @@
       };
     };
 
+    var actuallyRedraw = function(){
+      var vals = $("#slide").val();
+      var start = vals[0];
+      var end = vals[1];
+      var newMap = createAvailabilityMap(start,end,window.awesome);
+      spike.draw(newMap);
+    };
 
     var reDraw = function(data){
       window.awesome = data;
-      var newMap = createAvailabilityMap(21,22,data);
-      spike.draw(newMap);
+      actuallyRedraw();
       console.log("OK");
     };
 
     var getAvailability = function(){
       return $.get('resources/availability.json', reDraw);
+    };
+
+    var initSlide = function(){
+      $("#slide").noUiSlider({
+        start: [28, 30],
+        connect: true,
+        step: 1,
+        range: {
+          'min': 14,
+          'max': 38
+        },
+        behaviour: 'tap-drag',
+      });
+
+      $("#slide").on("slide", actuallyRedraw);
     };
 
     var init = function(){
